@@ -119,7 +119,6 @@ namespace TestTool
 
                     if (ScreenH < ScreenW)
                     {
-                        //MessageBox.Show(total + " - " + notRoundTotal + " - " + Math.Ceiling(notRoundTotal).ToString());
                         ScreenH /= 2;
                         browser.ClientSize = new Size(Convert.ToInt32(ScreenW / Math.Ceiling(notRoundTotal)), ScreenH - 20);
                         browser.Location = new Point(Convert.ToInt32(ScreenW / Math.Ceiling(notRoundTotal)) * cols, ScreenH * rows + 20);
