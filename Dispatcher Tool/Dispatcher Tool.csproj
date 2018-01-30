@@ -73,7 +73,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>DispatchViewer.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\DispatchViewer.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>F6173B261016D6980268052080EAC13E5F8DCA43</ManifestCertificateThumbprint>
@@ -123,6 +123,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Dispatcher Tool_TemporaryKey.pfx" />
     <None Include="packages.config" />
@@ -219,6 +220,7 @@
       <Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
       <Visible>false</Visible>
     </Content>
+    <None Include="Resources\DispatchViewer.ico" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(SolutionDir)packages\cef.redist.x86.3.2526.1362\CEF\**\en-GB.*;$(SolutionDir)packages\cef.redist.x86.3.2526.1362\CEF\**\en-US.*">
