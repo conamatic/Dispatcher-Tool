@@ -35,6 +35,7 @@ namespace TestTool
             panel.AutoSize = true;
 
             panel.Name = "Panel_" + counter.ToString();
+            panel.Tag = counter;
 
             panel.Top = (45 * counter) - 15;
             panel.Left = 20;
@@ -63,6 +64,13 @@ namespace TestTool
             }
 
             panel.Controls.Add(text_input);
+
+            ContextMenuStrip menu = new ContextMenuStrip();
+            ToolStripMenuItem menuRemove = new ToolStripMenuItem("Remove");
+            menuRemove.Click += new EventHandler(RemovePanel);
+            menu.Items.Add(menuRemove);
+
+            panel.ContextMenuStrip = menu;
 
             counter++;
             Panel_List.Add(panel);
@@ -181,6 +189,23 @@ namespace TestTool
             for (int i = 0; i < Panels.Quantity; i++)
             {
                 New_Panel(Panels.Template, false);
+            }
+        }
+
+        void RemovePanel(object sender, EventArgs e)
+        {
+            ToolStripMenuItem menuItem = (ToolStripMenuItem) sender;
+            ContextMenuStrip menu = (ContextMenuStrip) menuItem.GetCurrentParent();
+            Panel panel = (Panel) menu.SourceControl;
+            this.Controls.Remove(panel);
+            Panel_List.Remove(panel);
+            counter--;
+            foreach (Panel proceeding in Panel_List.Where(p => Convert.ToInt32(p.Tag) > Convert.ToInt32(panel.Tag)))
+            {
+                List<Label> label = proceeding.Controls.OfType<Label>().ToList();
+                label[0].Text = (Convert.ToInt32(label[0].Text) - 1).ToString();
+                proceeding.Tag = Convert.ToInt32(proceeding.Tag) - 1;
+                proceeding.Top = proceeding.Top - 45;
             }
         }
 
